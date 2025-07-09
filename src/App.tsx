@@ -10,16 +10,16 @@ function App() {
 
   useEffect(() => {
     getAllBirds().then((data) => {
-      console.log("data:", data);; 
-      setBirds(data)}
-    );
+      console.log("data:", data);
+      setBirds(data);
+    });
   }, []);
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div>
       <h1>🐦 Aves</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-        {birds.map(bird => (
+      <div className="flex flex-wrap justify-center gap-4">
+        {birds.map((bird) => (
           <BirdCard key={bird.id} bird={bird} />
         ))}
       </div>

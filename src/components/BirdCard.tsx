@@ -1,27 +1,29 @@
 import type { Bird } from "../models/bird";
 
-type Props = {
+interface BirdCardProps {
   bird: Bird;
-};
+  //Target url here? or onclick event
+}
 
-export default function BirdCard({ bird }: Props) {
+export default function BirdCard({ bird }: BirdCardProps) {
   return (
-    <div style={{
-      border: "1px solid #ccc",
-      borderRadius: "10px",
-      padding: "1rem",
-      maxWidth: "300px",
-      boxShadow: "0 0 5px rgba(0,0,0,0.1)",
-      backgroundColor: "#fff"
-    }}>
+    <div className="bg-white dark:bg-blue-950 shadow-lg rounded-xl overflow-hidden w-full max-w-sm cursor-pointer hover:shadow-xl transition-shadow">
       <img
+        className="w-3/4 mx-auto rounded h-48 object-cover object-top"
         src={`/images/${bird.image}`}
-        alt={bird.name}
-        style={{ width: "100%", borderRadius: "8px" }}
+        alt={bird.scientificName}
       />
-      <h2>{bird.name}</h2>
-      <h4 style={{ fontStyle: "italic", color: "#555" }}>{bird.scientificName}</h4>
-      <p>{bird.description}</p>
+      <div className="p-4">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+          {bird.name}
+        </h2>
+        <h4 className="italic text-sm text-gray-600 dark:text-gray-300">
+          {bird.scientificName}
+        </h4>
+        <p className="mt-2 text-gray-700 dark:text-gray-200 line-clamp-3">
+          {bird.description}
+        </p>
+      </div>
     </div>
   );
 }
