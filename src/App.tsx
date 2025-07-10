@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Bird } from "./models/bird";
-import BirdCard from "./components/BirdCard";
+import Layout from "./components/Layout";
+import BirdList from "./components/BirdList";
 
 const API_URL = "http://localhost:3000";
 const API_GET_ALL_BIRDS_URL = `${API_URL}/api/birds`;
@@ -16,14 +17,9 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>🐦 Aves</h1>
-      <div className="flex flex-wrap justify-center gap-4">
-        {birds.map((bird) => (
-          <BirdCard key={bird.id} bird={bird} />
-        ))}
-      </div>
-    </div>
+    <Layout>
+      <BirdList birds={birds}></BirdList>
+    </Layout>
   );
 }
 

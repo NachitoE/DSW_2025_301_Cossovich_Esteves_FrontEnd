@@ -2,12 +2,15 @@ import type { Bird } from "../models/bird";
 
 interface BirdCardProps {
   bird: Bird;
-  //Target url here? or onclick event
+  onClickEvent: () => void;
 }
 
-export default function BirdCard({ bird }: BirdCardProps) {
+export default function BirdCard({ bird, onClickEvent }: BirdCardProps) {
   return (
-    <div className="bg-white dark:bg-blue-950 shadow-lg rounded-xl overflow-hidden w-full max-w-sm cursor-pointer hover:shadow-xl transition-shadow">
+    <div
+      className="bg-white dark:bg-blue-950 shadow-lg rounded-xl overflow-hidden w-full max-w-sm cursor-pointer hover:shadow-xl transition-shadow"
+      onClick={onClickEvent}
+    >
       <img
         className="w-3/4 mx-auto rounded h-48 object-cover object-top"
         src={`/images/${bird.image}`}
