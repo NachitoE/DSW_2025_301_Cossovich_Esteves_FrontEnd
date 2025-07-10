@@ -3,18 +3,20 @@ import BirdCard from "./BirdCard";
 
 type BirdListProps = {
   birds: Bird[];
+  onClick: (bird: Bird) => void;
 };
 
 function BirdList(props: BirdListProps) {
+  const { birds, onClick } = props;
   return (
     <div>
       <h1>🐦 Aves</h1>
       <div className="flex flex-wrap justify-center gap-4">
-        {props.birds.map((bird) => (
+        {birds.map((bird) => (
           <BirdCard
             key={bird.id}
             bird={bird}
-            onClickEvent={() => console.log("a")}
+            onClickEvent={() => onClick(bird)}
           />
         ))}
       </div>

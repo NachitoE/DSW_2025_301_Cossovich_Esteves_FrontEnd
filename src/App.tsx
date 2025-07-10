@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import type { Bird } from "./models/bird";
 import Layout from "./components/Layout";
 import BirdList from "./components/BirdList";
-
-const API_URL = "http://localhost:3000";
-const API_GET_ALL_BIRDS_URL = `${API_URL}/api/birds`;
+import BirdDetail from "./components/BirdDetail";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { getAllBirds } from "./api";
 
 function App() {
   const [birds, setBirds] = useState<Bird[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getAllBirds().then((data) => {
@@ -18,15 +19,22 @@ function App() {
 
   return (
     <Layout>
-      <BirdList birds={birds}></BirdList>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <BirdList
+              birds={birds}
+              onClick={(b) => {
+                navigate(`/birds/${b.id}`);
+              }}
+            />
+          }
+        />
+        <Route path="/birds/:id" element={<BirdDetail />} />
+      </Routes>
     </Layout>
   );
-}
-
-export async function getAllBirds(): Promise<Bird[]> {
-  const res = await fetch(API_GET_ALL_BIRDS_URL);
-  const json = await res.json();
-  return json.data;
 }
 
 export default App;
