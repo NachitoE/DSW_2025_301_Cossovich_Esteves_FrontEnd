@@ -10,7 +10,7 @@ function BirdList(props: BirdListProps) {
   const { birds, onClick } = props;
   return (
     <div>
-      <h1>🐦 Aves</h1>
+      <h1 className="text-4xl font-semibold">🐦 Aves 🐦</h1>
       <div className="flex flex-wrap justify-center gap-4">
         {birds.map((bird) => (
           <BirdCard

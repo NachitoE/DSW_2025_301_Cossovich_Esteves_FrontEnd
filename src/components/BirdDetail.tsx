@@ -20,11 +20,10 @@ export default function BirdDetail() {
 
   return (
     <div>
-      <p>{bird.name}</p>
+      <img src={`/images/${bird.image}`} alt={bird.name} />
+      <h1>{bird.name}</h1>
       <p>{bird.description}</p>
       <p>{bird.scientificName}</p>
-      <img src={`/images/${bird.image}`} alt={bird.name} />
-      {/* Aquí podrías agregar más detalles o un botón para volver a la lista */}
     </div>
   );
 }

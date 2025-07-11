@@ -8,14 +8,16 @@ interface BirdCardProps {
 export default function BirdCard({ bird, onClickEvent }: BirdCardProps) {
   return (
     <div
-      className="bg-white dark:bg-blue-950 shadow-lg rounded-xl overflow-hidden w-full max-w-sm cursor-pointer hover:shadow-xl transition-shadow"
+      className="group bg-white dark:bg-blue-950 shadow-lg rounded-xl overflow-hidden w-full max-w-sm cursor-pointer hover:shadow-2xl transition-shadow"
       onClick={onClickEvent}
     >
-      <img
-        className="w-3/4 mx-auto rounded h-48 object-cover object-top"
-        src={`/images/${bird.image}`}
-        alt={bird.scientificName}
-      />
+      <div className="relative w-100 mx-auto h-48 overflow-hidden">
+        <img
+          className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
+          src={`/images/${bird.image}`}
+          alt={bird.scientificName}
+        />
+      </div>
       <div className="p-4">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
           {bird.name}
