@@ -22,7 +22,7 @@ export default function BirdCard({ bird, onClickEvent }: BirdCardProps) {
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">
           {bird.name}
         </h2>
-        <h4 className="italic text-sm text-gray-600 dark:text-gray-300">
+        <h4 className="italic text-sm text-gray-600 dark:text-gray-300 underline">
           {bird.scientificName}
         </h4>
         <p className="mt-2 text-gray-700 dark:text-gray-200 line-clamp-3">
