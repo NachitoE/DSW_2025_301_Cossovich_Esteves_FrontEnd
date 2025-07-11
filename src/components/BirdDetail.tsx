@@ -10,6 +10,7 @@ export default function BirdDetail() {
   useEffect(() => {
     if (!id) return;
     getBirdById(id).then((bird) => {
+      document.title = `🐦${bird.name} - Avistandoo🐦`;
       setBird(bird);
     });
   }, [id]);

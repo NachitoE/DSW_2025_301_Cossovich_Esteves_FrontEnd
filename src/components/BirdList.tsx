@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { Bird } from "../models/bird";
 import BirdCard from "./BirdCard";
 
@@ -8,9 +9,14 @@ type BirdListProps = {
 
 function BirdList(props: BirdListProps) {
   const { birds, onClick } = props;
+
+  useEffect(() => {
+    document.title = "🐦Aves - Avistandoo🐦";
+  }, []);
+
   return (
     <div>
-      <h1 className="text-4xl font-semibold">🐦 Aves 🐦</h1>
+      <h1 className="text-4xl font-semibold text-center">🐦 Aves 🐦</h1>
       <div className="flex flex-wrap justify-center gap-4">
         {birds.map((bird) => (
           <BirdCard
