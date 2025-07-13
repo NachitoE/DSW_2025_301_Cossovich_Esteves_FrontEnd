@@ -20,6 +20,9 @@ importers:
       react-router-dom:
         specifier: ^7.6.3
         version: 7.6.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      shared-types:
+        specifier: github:NachitoE/DSW_2025_301_Cossovich_Esteves_SharedTypes
+        version: https://codeload.github.com/NachitoE/DSW_2025_301_Cossovich_Esteves_SharedTypes/tar.gz/e6b6183de138aa19682497baf824149f9c8de803
       tailwindcss:
         specifier: ^4.1.11
         version: 4.1.11
@@ -1242,6 +1245,10 @@ packages:
   set-cookie-parser@2.7.1:
     resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
 
+  shared-types@https://codeload.github.com/NachitoE/DSW_2025_301_Cossovich_Esteves_SharedTypes/tar.gz/e6b6183de138aa19682497baf824149f9c8de803:
+    resolution: {tarball: https://codeload.github.com/NachitoE/DSW_2025_301_Cossovich_Esteves_SharedTypes/tar.gz/e6b6183de138aa19682497baf824149f9c8de803}
+    version: 1.0.3
+
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
     engines: {node: '>=8'}
@@ -2452,6 +2459,8 @@ snapshots:
   semver@7.7.2: {}
 
   set-cookie-parser@2.7.1: {}
+
+  shared-types@https://codeload.github.com/NachitoE/DSW_2025_301_Cossovich_Esteves_SharedTypes/tar.gz/e6b6183de138aa19682497baf824149f9c8de803: {}
 
   shebang-command@2.0.0:
     dependencies:

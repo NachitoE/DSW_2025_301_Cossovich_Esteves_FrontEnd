@@ -1,4 +1,4 @@
-import type { Bird } from "../models/bird";
+import type { Bird } from "shared-types";
 import { useEffect, useState } from "react";
 import { getBirdById } from "../api";
 import { useParams } from "react-router-dom";
@@ -21,7 +21,7 @@ export default function BirdDetail() {
 
   return (
     <div>
-      <img src={`/images/${bird.image}`} alt={bird.name} />
+      <img src={`/images/${bird.imageURL}`} alt={bird.name} />
       <h1>{bird.name}</h1>
       <p>{bird.description}</p>
       <p>{bird.scientificName}</p>

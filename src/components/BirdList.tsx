@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import type { Bird } from "../models/bird";
+import type { Bird } from "shared-types";
 import BirdCard from "./BirdCard";
 
 type BirdListProps = {

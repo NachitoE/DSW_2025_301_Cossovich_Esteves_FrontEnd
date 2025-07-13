@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import type { Bird } from "./models/bird";
+import type { Bird } from "shared-types";
 import Layout from "./components/Layout";
 import BirdList from "./components/BirdList";
 import BirdDetail from "./components/BirdDetail";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { getAllBirds } from "./api";
+import CreateBirdForm from "./components/CreateBirdForm";
 
 //https://coolors.co/palette/d9ed92-b5e48c-99d98c-76c893-52b69a-34a0a4-168aad-1a759f-1e6091-184e77 palette
 
@@ -34,6 +35,7 @@ function App() {
           }
         />
         <Route path="/birds/:id" element={<BirdDetail />} />
+        <Route path="/create-bird" element={<CreateBirdForm />} />
       </Routes>
     </Layout>
   );

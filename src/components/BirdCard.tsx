@@ -1,4 +1,4 @@
-import type { Bird } from "../models/bird";
+import type { Bird } from "shared-types";
 
 interface BirdCardProps {
   bird: Bird;
@@ -14,7 +14,7 @@ export default function BirdCard({ bird, onClickEvent }: BirdCardProps) {
       <div className="relative w-100 mx-auto h-48 overflow-hidden">
         <img
           className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
-          src={`/images/${bird.image}`}
+          src={`/images/${bird.imageURL}`}
           alt={bird.scientificName}
         />
       </div>
