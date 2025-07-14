@@ -65,6 +65,11 @@ export default function CreateBirdForm() {
 		};
 		//await for finished createBird??
 		const response = await createBird(newBird);
+		if (response.status !== 201) {
+			setUploading(false);
+			setResult(response.message || "Error al crear el pájaro.");
+			return;
+		}
 		setUploading(false);
 		setResult("Pájaro creado correctamente. ");
 	};

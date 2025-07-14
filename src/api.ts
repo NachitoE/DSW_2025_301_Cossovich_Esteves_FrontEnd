@@ -16,7 +16,7 @@ export async function getBirdById(id: string): Promise<Bird> {
 	return json.data;
 }
 
-export async function createBird(bird: Omit<Bird, "id">): Promise<Bird> {
+export async function createBird(bird: Omit<Bird, "id">): Promise<any> {
 	const res = await fetch(API_GET_ALL_BIRDS_URL, {
 		method: "POST",
 		headers: {
@@ -25,5 +25,5 @@ export async function createBird(bird: Omit<Bird, "id">): Promise<Bird> {
 		body: JSON.stringify(bird),
 	});
 	const json = await res.json();
-	return json.data;
+	return json;
 }
