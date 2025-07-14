@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         */}
 			</header>
 			{/* max-h-1/2 rounded-3xl */}
-			<main className="flex-grow p-4 bg-lime-fog max-w-11/12 self-center shadow-lg shadow-gray-500 rounded-3xl">
+			<main className="mt-4 mb-4 flex-grow p-4 bg-gradient-to-br from-white/10 via-green-400/50 to-white/10 backdrop-blur-md w-11/12 self-center shadow-lg shadow-gray-500 rounded-3xl">
 				{children}
 			</main>
 			<footer className="bg-reef-dark text-white p-2 text-center">

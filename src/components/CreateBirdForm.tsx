@@ -28,7 +28,10 @@ export default function CreateBirdForm() {
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-
+		if (!formData.name || !formData.scientificName || !formData.description) {
+			setResult("Por favor, completa todos los campos requeridos.");
+			return;
+		}
 		setUploading(true);
 		let imageURL = "";
 
@@ -86,7 +89,8 @@ export default function CreateBirdForm() {
 					"Cotorra Argentina",
 					"Nombre del Ave",
 					formData.name,
-					handleInputChange
+					handleInputChange,
+					true
 				)}
 				{createInput(
 					"text",
@@ -94,7 +98,8 @@ export default function CreateBirdForm() {
 					"Myiopsitta monachus",
 					"Nombre Científico",
 					formData.scientificName,
-					handleInputChange
+					handleInputChange,
+					true
 				)}
 				{createInput(
 					"file",
@@ -110,7 +115,8 @@ export default function CreateBirdForm() {
 					"Es un ave que...",
 					"Descripción",
 					formData.description,
-					handleInputChange
+					handleInputChange,
+					true
 				)}
 
 				<button
@@ -142,11 +148,14 @@ function createInput(
 	placeholder: string,
 	label: string,
 	value: string,
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+	required: boolean = false
 ) {
 	return (
 		<div>
+			-
 			<label className="block text-lg font-medium text-gray-700 text-center">
+				{required && <span className="text-red-500">*</span>}
 				{label}
 			</label>
 			<input

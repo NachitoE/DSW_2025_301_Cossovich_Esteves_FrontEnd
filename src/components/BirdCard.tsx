@@ -8,7 +8,7 @@ interface BirdCardProps {
 export default function BirdCard({ bird, onClickEvent }: BirdCardProps) {
 	return (
 		<div
-			className="group bg-white dark:bg-blue-950 shadow-lg rounded-xl overflow-hidden w-full max-w-sm cursor-pointer hover:shadow-2xl transition-shadow"
+			className="group isolate bg-white/20 shadow-lg ring-1 ring-black/5 rounded-xl overflow-hidden w-full max-w-sm cursor-pointer hover:shadow-2xl transition-shadow"
 			onClick={onClickEvent}
 		>
 			<div className="relative w-100 mx-auto h-48 overflow-hidden">
