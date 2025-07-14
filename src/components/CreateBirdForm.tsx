@@ -39,7 +39,7 @@ export default function CreateBirdForm() {
 			uploadData.append("folder", "aves");
 
 			try {
-				const res = await fetch(
+				const imageResponse = await fetch(
 					"https://api.cloudinary.com/v1_1/dzxlynhfm/image/upload",
 					{
 						method: "POST",
@@ -47,8 +47,8 @@ export default function CreateBirdForm() {
 					}
 				);
 
-				const data = await res.json();
-				imageURL = data.secure_url;
+				const imageUploadData = await imageResponse.json();
+				imageURL = imageUploadData.secure_url;
 			} catch (error) {
 				console.error("Error al subir imagen:", error);
 				setResult("Error al subir la imagen. Por favor, inténtalo de nuevo.");
