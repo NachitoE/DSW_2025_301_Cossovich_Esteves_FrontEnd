@@ -153,7 +153,6 @@ function createInput(
 ) {
 	return (
 		<div>
-			-
 			<label className="block text-lg font-medium text-gray-700 text-center">
 				{required && <span className="text-red-500">*</span>}
 				{label}
