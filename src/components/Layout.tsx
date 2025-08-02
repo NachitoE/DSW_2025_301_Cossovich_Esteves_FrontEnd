@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import GoogleLogin from "./GoogleLogin";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,6 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Link to="/">
           <div className="text-center text-5xl text-gray-900">Avistandoo</div>
         </Link>
+        <GoogleLogin />
         {/*
         <Link to="/">
           <img src="/assets/AvistandooLogo.png" className="object-cover" />
