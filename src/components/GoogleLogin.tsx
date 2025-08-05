@@ -13,10 +13,13 @@ export default function GoogleLogin() {
 
   if (user) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <span className="text-gray-800 dark:text-white">
-          Bienvenido, {user.displayName || user.email}
-        </span>
+      <div className="flex items-center h-screen justify-center">
+        <img
+          src={user.avatarURL || "/default-avatar.png"}
+          alt={user.name}
+          className="w-16 h-16 rounded-full border-2 border-gray-300 shadow"
+          title={user.name}
+        />
       </div>
     );
   }
@@ -25,9 +28,14 @@ export default function GoogleLogin() {
     <div className="flex justify-center items-center h-screen">
       <a
         href="http://localhost:3000/api/auth/google"
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        className="flex items-center justify-center w-16 h-16 rounded-full bg-white shadow border hover:shadow-lg transition"
+        title="Login with Google"
       >
-        Login with Google
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
+          alt="Google"
+          className="w-8 h-8"
+        />
       </a>
     </div>
   );
