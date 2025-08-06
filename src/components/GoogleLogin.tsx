@@ -1,17 +1,10 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 export default function GoogleLogin() {
-  const [user, setUser] = useState<any>(null);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/auth/me", { withCredentials: true })
-      .then((res) => setUser(res.data))
-      .catch(() => setUser(null));
-  }, []);
+  const user = useAuth().user;
 
   if (user) {
+    console.log("Usuario autenticado:", user);
     return (
       <div className="flex items-center h-screen justify-center">
         <img
