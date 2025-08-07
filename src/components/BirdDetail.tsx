@@ -18,10 +18,10 @@ export default function BirdDetail() {
   if (!bird) {
     return <div>Cargando...</div>;
   }
-
+  console.log("Bird data:", bird);
   return (
     <div>
-      <img src={`/images/${bird.imageURL}`} alt={bird.name} />
+      <img src={`${bird.imageURL}`} alt={bird.name} />
       <h1>{bird.name}</h1>
       <p>{bird.description}</p>
       <p>{bird.scientificName}</p>

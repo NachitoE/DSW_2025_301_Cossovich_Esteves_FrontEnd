@@ -1,5 +1,6 @@
 import type { Bird } from "shared-types";
 import type { User } from "shared-types";
+import axios from "axios";
 
 export const API_URL = "http://localhost:3000";
 export const API_GET_ALL_BIRDS_URL = `${API_URL}/api/birds`;
@@ -12,9 +13,9 @@ export async function getAllBirds(): Promise<Bird[]> {
 }
 
 export async function getBirdById(id: string): Promise<Bird> {
-  const res = await fetch(`${API_GET_BIRD_URL}/${id}`);
-  const json = await res.json();
-  return json.data;
+  const res = await axios.get(`${API_GET_BIRD_URL}/${id}`);
+  const bird = res.data.data; // ???
+  return bird as Bird;
 }
 
 export async function createBird(
