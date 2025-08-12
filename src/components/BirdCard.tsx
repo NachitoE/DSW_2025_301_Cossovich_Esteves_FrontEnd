@@ -8,24 +8,24 @@ interface BirdCardProps {
 export default function BirdCard({ bird, onClickEvent }: BirdCardProps) {
 	return (
 		<div
-			className="group isolate bg-white/20 shadow-lg ring-1 ring-black/5 rounded-xl overflow-hidden w-full max-w-sm cursor-pointer hover:shadow-2xl transition-shadow"
+			className="group bg-white/80 shadow-xl ring-2 ring-lime-400 rounded-2xl overflow-hidden w-full max-w-xs cursor-pointer hover:scale-105 transition-transform duration-300"
 			onClick={onClickEvent}
 		>
-			<div className="relative w-100 mx-auto h-48 overflow-hidden">
+			<div className="relative w-full h-48 overflow-hidden">
 				<img
-					className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
-					src={`${bird.imageURL}`}
+					className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-300"
+					src={bird.imageURL}
 					alt={bird.scientificName}
 				/>
+				<div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent px-4 py-2">
+					<h2 className="text-lg font-bold text-white">{bird.name}</h2>
+					<h4 className="italic text-xs text-lime-200">
+						{bird.scientificName}
+					</h4>
+				</div>
 			</div>
 			<div className="p-4">
-				<h2 className="text-xl font-bold text-gray-900 dark:text-white">
-					{bird.name}
-				</h2>
-				<h4 className="italic text-sm text-gray-600 dark:text-gray-300 underline">
-					{bird.scientificName}
-				</h4>
-				<p className="mt-2 text-gray-700 dark:text-gray-200 line-clamp-3">
+				<p className="text-gray-700 dark:text-gray-200 line-clamp-3 text-sm">
 					{bird.description}
 				</p>
 			</div>

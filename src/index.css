@@ -2,23 +2,34 @@
 @import "tailwindcss";
 
 @theme {
-  --color-lime-fog: #d9ed92;
-  --color-lime-meadow: #b5e48c;
-  --color-lime-leaf: #99d98c;
+	--color-lime-fog: #d9ed92;
+	--color-lime-meadow: #b5e48c;
+	--color-lime-leaf: #99d98c;
 
-  --color-mint-breeze: #76c893;
-  --color-seafoam: #52b69a;
-  --color-teal-tide: #34a0a4;
+	--color-mint-breeze: #76c893;
+	--color-seafoam: #52b69a;
+	--color-teal-tide: #34a0a4;
 
-  --color-ocean-sky: #168aad;
-  --color-deep-water: #1a759f;
-  --color-reef-dark: #1e6091;
+	--color-ocean-sky: #168aad;
+	--color-deep-water: #1a759f;
+	--color-reef-dark: #1e6091;
 
-  --color-midnight-bay: #184e77;
+	--color-midnight-bay: #184e77;
+}
+
+@font-face {
+	font-family: "Queensides";
+	src: url("/assets/fonts/Queensides Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
 }
 
 html {
-  font-family: "Roboto Flex", sans-serif;
-  background-color: #fefae0;
-  color-scheme: light;
+	font-family: "Roboto Flex", sans-serif;
+	background-color: #fefae0;
+	color-scheme: light;
+}
+
+.queensides-font {
+	font-family: "Queensides", sans-serif;
 }
