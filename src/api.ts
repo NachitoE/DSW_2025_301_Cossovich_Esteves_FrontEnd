@@ -1,15 +1,16 @@
 import type { Bird } from "shared-types";
 import type { User } from "shared-types";
+import type { Comment } from "shared-types";
 import axios from "axios";
 
-export const API_URL = "http://localhost:3000";
-export const API_GET_ALL_BIRDS_URL = `${API_URL}/api/birds`;
-export const API_GET_BIRD_URL = `${API_URL}/api/birds`;
+const API_URL = "http://localhost:3000";
+const API_GET_ALL_BIRDS_URL = `${API_URL}/api/birds`;
+const API_GET_BIRD_URL = `${API_URL}/api/birds`;
+const API_GET_BIRD_COMMENTS_URL = `${API_URL}/api/comments`;
 
 export async function getAllBirds(): Promise<Bird[]> {
-  const res = await fetch(API_GET_ALL_BIRDS_URL);
-  const json = await res.json();
-  return json.data;
+  const res = await axios.get(API_GET_ALL_BIRDS_URL);
+  return res.data.data;
 }
 
 export async function getBirdById(id: string): Promise<Bird> {
@@ -22,13 +23,16 @@ export async function createBird(
   bird: Omit<Bird, "id">,
   user: User
 ): Promise<any> {
-  const res = await fetch(API_GET_ALL_BIRDS_URL, {
-    method: "POST",
+  const res = await axios.post(API_GET_ALL_BIRDS_URL, {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ user, bird }),
+    data: { user, bird },
   });
-  const json = await res.json();
-  return json;
+  return res.data;
+}
+
+export async function getBirdCommentsById(birdId: string): Promise<Comment[]> {
+  const res = await axios.get(`${API_GET_BIRD_COMMENTS_URL}/${birdId}`);
+  return res.data;
 }
