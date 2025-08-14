@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getBirdById } from "../api";
 import { useParams } from "react-router-dom";
 import BirdCommentList from "./BirdCommentList";
+import BirdCommentTextBox from "./BirdCommentTextBox";
 
 export default function BirdDetail() {
   const [bird, setBird] = useState<Bird | null>(null);
@@ -15,6 +16,13 @@ export default function BirdDetail() {
       setBird(bird);
     });
   }, [id]);
+
+  //refreshing
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleRefresh = () => {
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
 
   if (!bird) {
     return <div className="text-center text-lg text-lime-700">Cargando...</div>;
@@ -32,7 +40,8 @@ export default function BirdDetail() {
         {bird.scientificName}
       </h2>
       <p className="text-gray-800 text-center text-lg">{bird.description}</p>
-      <BirdCommentList birdId={id!} />
+      <BirdCommentTextBox birdId={id!} onCommentAdded={handleRefresh} />
+      <BirdCommentList birdId={id!} refreshKey={refreshKey} />
     </div>
   );
 }
