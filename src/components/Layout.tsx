@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import GoogleLogin from "./GoogleLogin";
+import AdminDashboardButton from "@admin/AdminDashboardButton";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
@@ -11,7 +12,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 						<span className="text-blue-700">oo</span>
 					</div>
 				</Link>
-				<div className="ml-auto">
+				<div className="ml-auto h-10 flex items-center gap-4">
+					<AdminDashboardButton />
 					<GoogleLogin />
 				</div>
 			</header>

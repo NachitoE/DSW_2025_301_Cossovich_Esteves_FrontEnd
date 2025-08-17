@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Bird } from "shared-types";
-import { createBird } from "../api";
-import { useAuth } from "../context/AuthContext";
+import { createBird } from "@/api";
+import { useAuth } from "@context/AuthContext";
 import axios from "axios";
 
 export default function CreateBirdForm() {

@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.8.0",
+    "react-router-dom": "^7.8.1",
     "shared-types": "github:NachitoE/DSW_2025_301_Cossovich_Esteves_SharedTypes",
     "tailwindcss": "^4.1.12"
   },
@@ -32,6 +32,7 @@
     "postcss": "^8.5.6",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "vite": "^7.1.2",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }
