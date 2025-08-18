@@ -8,7 +8,6 @@ export default function AdminDashboardButton() {
 	useEffect(() => {
 		const checkAdmin = async () => {
 			const _isAdmin: boolean = await isAdmin();
-			console.log(_isAdmin);
 			setAdmin(_isAdmin);
 		};
 		checkAdmin();
@@ -18,8 +17,8 @@ export default function AdminDashboardButton() {
 	return (
 		<button
 			className="bg-blue-500 text-white p-2 rounded cursor-pointer hover:bg-blue-600 transition"
-			onClick={async () => {
-				if (await isAdmin()) {
+			onClick={() => {
+				if (admin) {
 					navigate("/admin-dashboard");
 				} else {
 					alert("No tienes permisos para acceder a esta sección.");
