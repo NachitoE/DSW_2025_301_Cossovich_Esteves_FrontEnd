@@ -1,12 +1,16 @@
 import { isAdmin } from "@/api";
 import { useEffect, useState, type JSX } from "react";
 import CreateBirdForm from "./CreateBirdForm";
+import AssignBirdTraits from "./AssignBirdTraits";
 
 export default function AdminDashboard() {
 	const [admin, setAdmin] = useState(false);
 	// --- SECTIONS ---
 	const handleCreateBird = () => {
 		setSection(<CreateBirdForm />);
+	};
+	const handleAssignBirdTraits = () => {
+		setSection(<AssignBirdTraits />);
 	};
 	const [section, setSection] = useState<JSX.Element | null>(null);
 	useEffect(() => {
@@ -22,6 +26,9 @@ export default function AdminDashboard() {
 	return (
 		<div>
 			<div>{createButton("Crear Pájaro", handleCreateBird)}</div>
+			<div>
+				{createButton("Asignar Características", handleAssignBirdTraits)}
+			</div>
 			<div>
 				<h1>Panel de Administración</h1>
 				{section}
