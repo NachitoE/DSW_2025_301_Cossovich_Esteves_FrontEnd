@@ -1,4 +1,4 @@
-import type { Bird, BirdVisualTrait } from "shared-types";
+import type { Bird, BirdSighting, BirdVisualTrait } from "shared-types";
 import type { User } from "shared-types";
 import type { Comment } from "shared-types";
 import axios from "axios";
@@ -8,6 +8,7 @@ const API_GET_ALL_BIRDS_URL = `${API_URL}/api/birds`;
 const API_GET_BIRD_URL = `${API_URL}/api/birds`;
 const API_BIRD_COMMENTS_URL = `${API_URL}/api/comments`;
 const API_BIRD_TRAITS_URL = `${API_URL}/api/bird-visual-traits`;
+const API_BIRD_SIGHTING_URL = `${API_URL}/api/bird-sighting`;
 
 export async function getAllBirds(): Promise<Bird[]> {
 	const res = await axios.get(API_GET_ALL_BIRDS_URL);
@@ -98,4 +99,25 @@ export async function getBirdVisualTraitById(
 		console.error("Error fetching bird visual trait:", error);
 		return null;
 	}
+}
+
+export async function getAllBirdSightings() : Promise<BirdSighting[]> {
+	const res = await axios.get(API_BIRD_SIGHTING_URL);
+	return res.data.data;
+}
+
+export async function createBirdSighting(data: {
+	birdId: string;
+	userId: string;
+	dateTime: Date;
+	ubicationLatitude:number;
+	ubicationLongitude: number;
+}) {
+	const res = await axios.post(API_BIRD_SIGHTING_URL, {
+		headers: {
+			"Content-Type": "application/json",
+		},
+		data,
+	});
+	return res.data;
 }
