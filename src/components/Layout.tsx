@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import GoogleLogin from "./GoogleLogin";
 import AdminDashboardButton from "@admin/AdminDashboardButton";
-import BirdSightingButton from "./BirdSightingButton";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
