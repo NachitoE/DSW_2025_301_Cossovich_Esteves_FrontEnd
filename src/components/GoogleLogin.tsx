@@ -1,8 +1,9 @@
 import { useAuth } from "../context/AuthContext";
 import { useState, useRef, useEffect } from "react";
+import { logoutAuth } from "@/api";
 
 export default function GoogleLogin() {
-	const user = useAuth().user;
+	const { user, setUser } = useAuth();
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -23,9 +24,9 @@ export default function GoogleLogin() {
 		};
 	}, [isDropdownOpen]);
 
-	const handleLogout = () => {
-		// TODO: Implementar logout en el backend y limpiar cookies
-		window.location.href = "http://localhost:3000/api/auth/logout";
+	const handleLogout = async () => {
+		await logoutAuth();
+		setUser(null)
 	};
 
 	if (user) {
@@ -58,14 +59,14 @@ export default function GoogleLogin() {
 									console.log("Ir al perfil");
 									setIsDropdownOpen(false);
 								}}
-								className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-lime-50 transition"
+								className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-lime-50 transition cursor-pointer"
 							>
 								Ver perfil
 							</button>
 
 							<button
 								onClick={handleLogout}
-								className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition"
+								className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition cursor-pointer"
 							>
 								Cerrar sesión
 							</button>

@@ -12,16 +12,7 @@ const API_BIRD_SIGHTING_URL = `${API_URL}/api/bird-sighting`;
 const API_AUTH_URL = `${API_URL}/api/auth`;
 
 axios.defaults.withCredentials = true;
-axios.interceptors.response.use(
-  response => response,
-  error => {
-    if (error.response?.status === 401) {
-      // Token expirado, redirigir al login
-      logoutAuth()
-    }
-    return Promise.reject(error);
-  }
-);
+
 export async function getAllBirds(): Promise<Bird[]> {
 	const res = await axios.get(API_GET_ALL_BIRDS_URL);
 	return extractData(res)
