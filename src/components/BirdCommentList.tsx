@@ -17,6 +17,12 @@ export default function BirdCommentList({
 	useEffect(() => {
 		async function fetchCommentsWithAvatars() {
 			const comments = await getBirdCommentsById(birdId);
+			// Asegurarse de que comments es un array
+			if (!Array.isArray(comments)) {
+				console.error("Expected comments to be an array, got:", comments);
+				setBirdComments([]);
+				return;
+			}
 			//order by date
 			comments.sort((a, b) => {
 				return (

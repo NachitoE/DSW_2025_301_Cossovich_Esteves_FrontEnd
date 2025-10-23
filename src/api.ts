@@ -36,7 +36,7 @@ export async function createBird(
 
 export async function getBirdCommentsById(birdId: string): Promise<Comment[]> {
 	const res = await axios.get(`${API_BIRD_COMMENTS_URL}/${birdId}`);
-	return res.data;
+	return res.data.data || [];
 }
 export async function updateBird(bird: Bird) {
 	const res = await axios.put(`${API_GET_BIRD_URL}/${bird.id}`, {
