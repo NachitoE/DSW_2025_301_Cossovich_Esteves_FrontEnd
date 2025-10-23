@@ -8,7 +8,7 @@ export default function GoogleLogin() {
 		return (
 			<div className="flex items-center h-screen justify-center">
 				<img
-					src={user.avatarURL || "/default-avatar.png"}
+					src={user.avatarURL || "/default-avatar.webp"}
 					alt={user.name}
 					className="w-16 h-16 rounded-full border-2 border-gray-300 shadow"
 					title={user.name}

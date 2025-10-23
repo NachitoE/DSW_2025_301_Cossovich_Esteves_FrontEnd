@@ -9,16 +9,18 @@ const API_GET_BIRD_URL = `${API_URL}/api/birds`;
 const API_BIRD_COMMENTS_URL = `${API_URL}/api/comments`;
 const API_BIRD_TRAITS_URL = `${API_URL}/api/bird-visual-traits`;
 const API_BIRD_SIGHTING_URL = `${API_URL}/api/bird-sighting`;
+const API_AUTH_URL = `${API_URL}/api/auth`;
+
+axios.defaults.withCredentials = true;
 
 export async function getAllBirds(): Promise<Bird[]> {
 	const res = await axios.get(API_GET_ALL_BIRDS_URL);
-	return res.data.data;
+	return extractData(res)
 }
 
 export async function getBirdById(id: string): Promise<Bird> {
 	const res = await axios.get(`${API_GET_BIRD_URL}/${id}`);
-	const bird = res.data.data; // ???
-	return bird as Bird;
+	return extractData(res)
 }
 
 export async function createBird(
@@ -31,12 +33,12 @@ export async function createBird(
 		},
 		data: { user, bird },
 	});
-	return res.data;
+	return extractData(res)
 }
 
 export async function getBirdCommentsById(birdId: string): Promise<Comment[]> {
 	const res = await axios.get(`${API_BIRD_COMMENTS_URL}/${birdId}`);
-	return res.data.data || [];
+	return extractData(res) || [];
 }
 export async function updateBird(bird: Bird) {
 	const res = await axios.put(`${API_GET_BIRD_URL}/${bird.id}`, {
@@ -45,7 +47,7 @@ export async function updateBird(bird: Bird) {
 		},
 		data: bird,
 	});
-	return res.data;
+	return extractData(res)
 }
 
 export async function createBirdComment(data: {
@@ -59,13 +61,13 @@ export async function createBirdComment(data: {
 		},
 		data,
 	});
-	return res.data;
+	return extractData(res)
 }
 
 export async function getUserById(userId: string): Promise<User | null> {
 	try {
 		const res = await axios.get(`${API_URL}/api/users/${userId}`);
-		return res.data;
+		return extractData(res)
 	} catch (error) {
 		console.error("Error fetching user:", error);
 		return null;
@@ -86,7 +88,7 @@ export async function isAdmin(): Promise<boolean> {
 
 export async function getAllBirdVisualTraits() {
 	const res = await axios.get(API_BIRD_TRAITS_URL);
-	return res.data.data;
+	return extractData(res)
 }
 
 export async function getBirdVisualTraitById(
@@ -94,7 +96,7 @@ export async function getBirdVisualTraitById(
 ): Promise<BirdVisualTrait | null> {
 	try {
 		const res = await axios.get(`${API_BIRD_TRAITS_URL}/${id}`);
-		return res.data.data;
+		return extractData(res)
 	} catch (error) {
 		console.error("Error fetching bird visual trait:", error);
 		return null;
@@ -103,7 +105,7 @@ export async function getBirdVisualTraitById(
 
 export async function getAllBirdSightings() : Promise<BirdSighting[]> {
 	const res = await axios.get(API_BIRD_SIGHTING_URL);
-	return res.data.data;
+	return extractData(res)
 }
 
 export async function createBirdSighting(data: {
@@ -119,5 +121,11 @@ export async function createBirdSighting(data: {
 		},
 		data,
 	});
-	return res.data;
+	return extractData(res)
 }
+
+export async function getMeAuth(){
+	const res = await axios.get(`${API_AUTH_URL}/me`);
+	return extractData(res)
+}
+const extractData = (res: any) => res.data.data;
