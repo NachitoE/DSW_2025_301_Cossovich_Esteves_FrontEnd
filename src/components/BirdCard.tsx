@@ -1,4 +1,5 @@
 import type { Bird } from "shared-types";
+import FadeContent from './FadeContent'
 
 interface BirdCardProps {
 	bird: Bird;
@@ -7,6 +8,7 @@ interface BirdCardProps {
 
 export default function BirdCard({ bird, onClickEvent }: BirdCardProps) {
 	return (
+		<FadeContent blur={false} duration={400} easing="ease-out" initialOpacity={0}>
 		<div
 			className="group bg-white/80 shadow-xl ring-2 ring-lime-400 rounded-2xl overflow-hidden w-full max-w-xs cursor-pointer hover:scale-105 transition-transform duration-300"
 			onClick={onClickEvent}
@@ -30,5 +32,6 @@ export default function BirdCard({ bird, onClickEvent }: BirdCardProps) {
 				</p>
 			</div>
 		</div>
+		</FadeContent>
 	);
 }
