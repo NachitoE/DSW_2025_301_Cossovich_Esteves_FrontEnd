@@ -6,7 +6,7 @@ import BirdDetail from "./components/BirdDetail";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { getAllBirds } from "./api";
 import AdminDashboard from "./components/admin/AdminDashboard";
-import BirdSightingButton from "./components/BirdSightingButton";
+//import BirdSightingButton from "./components/BirdSightingButton";
 import BirdSightingForm from "./components/BirdSightingForm";
 
 //https://coolors.co/palette/d9ed92-b5e48c-99d98c-76c893-52b69a-34a0a4-168aad-1a759f-1e6091-184e77 palette
