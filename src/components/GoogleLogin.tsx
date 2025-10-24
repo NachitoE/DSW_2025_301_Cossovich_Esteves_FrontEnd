@@ -1,6 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 import { useState, useRef, useEffect } from "react";
 import { logoutAuth } from "@/api";
+import { FaGoogle } from "react-icons/fa";
 
 export default function GoogleLogin() {
 	const { user, setUser } = useAuth();
@@ -81,14 +82,11 @@ export default function GoogleLogin() {
 		<div className="flex justify-center items-center h-screen">
 			<a
 				href="http://localhost:3000/api/auth/google"
-				className="flex items-center justify-center w-16 h-16 rounded-full bg-white shadow border hover:shadow-lg transition"
 				title="Login with Google"
 			>
-				<img
-					src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
-					alt="Google"
-					className="w-8 h-8"
-				/>
+				<span>
+				<FaGoogle></FaGoogle>
+				Iniciar Sesión</span>
 			</a>
 		</div>
 	);
