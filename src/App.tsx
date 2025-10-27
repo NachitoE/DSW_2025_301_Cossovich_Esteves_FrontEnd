@@ -8,19 +8,13 @@ import { getAllBirds } from "./api";
 import AdminDashboard from "./components/admin/AdminDashboard";
 //import BirdSightingButton from "./components/BirdSightingButton";
 import BirdSightingForm from "./components/BirdSightingForm";
+import BirdSearch from "./components/BirdSearch";
 
 //https://coolors.co/palette/d9ed92-b5e48c-99d98c-76c893-52b69a-34a0a4-168aad-1a759f-1e6091-184e77 palette
 
 function App() {
-	const [birds, setBirds] = useState<Bird[]>([]);
+	
 	const navigate = useNavigate();
-
-	useEffect(() => {
-		getAllBirds().then((data) => {
-			console.log("data:", data);
-			setBirds(data);
-		});
-	}, []);
 
 	return (
 		<Layout>
@@ -28,9 +22,8 @@ function App() {
 				<Route
 					path="/"
 					element={
-						<BirdList
-							birds={birds}
-							onClick={(b) => {
+						<BirdSearch
+							onClick={(b: Bird) => {
 								navigate(`/birds/${b.id}`);
 							}}
 						/>
