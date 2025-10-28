@@ -14,7 +14,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				</Link>
 				<div className="ml-auto h-10 flex items-center gap-4">
 					
-					<AdminDashboardButton />
 					<GoogleLogin />
 				</div>
 			</header>

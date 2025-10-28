@@ -1,14 +1,24 @@
 import { useAuth } from "../context/AuthContext";
 import { useState, useRef, useEffect } from "react";
-import { logoutAuth } from "@/api";
+import { isAdmin, logoutAuth } from "@/api";
 import { FaGoogle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function GoogleLogin() {
 	const { user, setUser } = useAuth();
+	const [admin, setAdmin] = useState(false);
+	const navigate = useNavigate();
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
-	// Cerrar dropdown al hacer click fuera
+	useEffect(() => {
+		const checkAdmin = async () => {
+			const _isAdmin: boolean = await isAdmin();
+			setAdmin(_isAdmin);
+		};
+		checkAdmin();
+	}, []);
+
 	useEffect(() => {
 		function handleClickOutside(event: MouseEvent) {
 			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -62,9 +72,17 @@ export default function GoogleLogin() {
 								}}
 								className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-lime-50 transition cursor-pointer"
 							>
-								Ver perfil
+								Ver perfil [TODO]
 							</button>
-
+							{admin && (
+							<button
+								onClick={() => {
+									navigate("/admin-dashboard");
+								}}
+								className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-lime-50 transition cursor-pointer"
+							>
+								Admin Dashboard
+							</button>)}
 							<button
 								onClick={handleLogout}
 								className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition cursor-pointer"
