@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { Bird } from "shared-types";
 import { createBird } from "@/api";
 import { useAuth } from "@context/AuthContext";
-import axios from "axios";
+import { uploadImage } from "@/cloudinary";
 
 export default function CreateBirdForm() {
 	// -- VALIDATION --
@@ -67,10 +67,7 @@ export default function CreateBirdForm() {
 			uploadData.append("folder", "aves");
 
 			try {
-				const imageResponse = await axios.post(
-					"https://api.cloudinary.com/v1_1/dzxlynhfm/image/upload",
-					uploadData
-				);
+				const imageResponse = await uploadImage(uploadData);
 
 				const imageUploadData = await imageResponse.data;
 				imageURL = imageUploadData.secure_url;
@@ -89,10 +86,10 @@ export default function CreateBirdForm() {
 			imageURL,
 		};
 		//await for finished createBird??
-		const response = await createBird(newBird, user);
-		if (response.status !== 201) {
+		const responseBird = await createBird(newBird);
+		if (!responseBird) {
 			setUploading(false);
-			setResult(response.message || "Error al crear el pájaro.");
+			setResult("Error al crear el pájaro.");
 			return;
 		}
 		setUploading(false);
