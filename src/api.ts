@@ -1,4 +1,4 @@
-import type { Bird, BirdSighting, BirdVisualTrait } from "shared-types";
+import type { Bird, BirdSighting, BirdVisualTrait, FilterOptionsDTO } from "shared-types";
 import type { User } from "shared-types";
 import type { Comment } from "shared-types";
 import axios from "axios";
@@ -10,6 +10,8 @@ const API_BIRD_COMMENTS_URL = `${API_URL}/api/comments`;
 const API_BIRD_TRAITS_URL = `${API_URL}/api/bird-visual-traits`;
 const API_BIRD_SIGHTING_URL = `${API_URL}/api/bird-sighting`;
 const API_AUTH_URL = `${API_URL}/api/auth`;
+const API_FILTERS_URL= `${API_URL}/api/filters`;
+
 
 const api = axios.create({
 	withCredentials: true
@@ -134,3 +136,8 @@ export async function logoutAuth(){
 	const res = await api.get(`${API_AUTH_URL}/logout`);
 }
 const extractData = (res: any) => res.data.data;
+
+export async function getFilters(): Promise<FilterOptionsDTO[]>{
+	const res = await api.get(`${API_FILTERS_URL}/different-filters`);
+	return extractData(res);
+}

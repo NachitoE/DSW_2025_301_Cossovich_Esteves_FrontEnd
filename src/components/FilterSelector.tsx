@@ -1,22 +1,26 @@
-import type { FilterOptionsDTO } from "shared-types";
+import type { BirdVisualTrait, FilterOptionsDTO } from "shared-types";
+
 
 type FilterSelectorProps =  {
     filterOption : FilterOptionsDTO;
+    allTraits : Array<BirdVisualTrait>
 }
 
-export default function FilterSelector({filterOption}: FilterSelectorProps){
+export default function FilterSelector({filterOption, allTraits}: FilterSelectorProps){
     
+    const getName  = (option:string) => {
+        const trait = allTraits.find((t) => String(t.id) === String(option));
+        return trait?.description ?? "Desconocido";
+    }
 
     return(
     <p>
-    BeakShape
-    <label>
+    {filterOption.filter}
+    {filterOption.options.map(option=>{
+        return( <label>
         <input type="radio" name="myRadio" value="option1" />
-        curvado
-    </label>
-    <label>
-        <input type="radio" name="myRadio" value="option2" />
-        recto
-    </label>
+        {getName(option )}
+    </label>)
+    })}
       </p>);
 }
