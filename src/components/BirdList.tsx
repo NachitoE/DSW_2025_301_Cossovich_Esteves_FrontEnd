@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import type { Bird } from "shared-types";
+import type { Bird, SelectedFilterOptionDTO } from "shared-types";
 import { BirdCard } from "@components/BirdCard";
 
 type BirdListProps = {
@@ -7,7 +7,7 @@ type BirdListProps = {
   onClick: (bird: Bird) => void;
 };
 
-export default function BirdList({ birds, onClick }: BirdListProps) {
+export default function BirdList({ birds, onClick, setSelectedFilters }: BirdListProps) {
   useEffect(() => {
     document.title = "Aves - Avistandoo";
   }, []);

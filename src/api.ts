@@ -1,4 +1,4 @@
-import type { Bird, BirdSighting, BirdVisualTrait, FilterOptionsDTO } from "shared-types";
+import type { Bird, BirdSighting, BirdVisualTrait, FilterOptionsDTO, SelectedFilterOptionDTO } from "shared-types";
 import type { User } from "shared-types";
 import type { Comment } from "shared-types";
 import axios from "axios";
@@ -139,5 +139,9 @@ const extractData = (res: any) => res.data.data;
 
 export async function getFilters(): Promise<FilterOptionsDTO[]>{
 	const res = await api.get(`${API_FILTERS_URL}/different-filters`);
+	return extractData(res);
+}
+export async function getFilteredBirds(selectedFilters: SelectedFilterOptionDTO[]): Promise<Bird[]>{
+	const res = await api.post(`${API_FILTERS_URL}/filter-birds`, selectedFilters);
 	return extractData(res);
 }
