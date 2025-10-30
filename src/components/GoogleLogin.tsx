@@ -102,9 +102,9 @@ export default function GoogleLogin() {
 				href="http://localhost:3000/api/auth/google"
 				title="Login with Google"
 			>
-				<span>
+				<div className="dis">
 				<FaGoogle></FaGoogle>
-				Iniciar Sesión</span>
+				Iniciar Sesión</div>
 			</a>
 		</div>
 	);
