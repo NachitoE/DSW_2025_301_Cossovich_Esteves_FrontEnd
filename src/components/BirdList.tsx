@@ -7,7 +7,7 @@ type BirdListProps = {
   onClick: (bird: Bird) => void;
 };
 
-export default function BirdList({ birds, onClick, setSelectedFilters }: BirdListProps) {
+export default function BirdList({ birds, onClick }: BirdListProps) {
   useEffect(() => {
     document.title = "Aves - Avistandoo";
   }, []);
