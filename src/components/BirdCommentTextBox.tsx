@@ -20,7 +20,6 @@ export default function BirdCommentTextBox({
 
     await createBirdComment({
       birdId,
-      userId: user!.id,
       text: content,
     });
 

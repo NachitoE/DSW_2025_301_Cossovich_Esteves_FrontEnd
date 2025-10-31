@@ -14,7 +14,7 @@ export default function BirdDetail() {
 	useEffect(() => {
 		if (!id) return;
 		getBirdById(id).then((bird) => {
-			document.title = `🐦${bird.name} - Avistandoo🐦`;
+			document.title = `${bird.name} - Avistandoo`;
 			setBird(bird);
 		});
 	}, [id]);
@@ -55,7 +55,7 @@ export default function BirdDetail() {
 			{birdTraits && (
 				<h2>Características: {birdTraits.map((trait) => trait).join(", ")}</h2>
 			)}
-			<BirdSightingButton />
+			{/*<BirdSightingButton />*/}
 			<p className="text-gray-800 text-center text-lg">{bird.description}</p>
 			<BirdCommentTextBox birdId={id!} onCommentAdded={handleRefresh} />
 			<BirdCommentList birdId={id!} refreshKey={refreshKey} />

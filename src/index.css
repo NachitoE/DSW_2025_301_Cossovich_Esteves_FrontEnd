@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
 @plugin "tailwindcss-animate";
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -45,7 +46,7 @@
 
 html {
 	font-family: "Roboto Flex", sans-serif;
-	background-color: #fefae0;
+	background-color: rgb(226, 250, 252);
 	color-scheme: light;
 }
 
@@ -69,6 +70,13 @@ html {
   font-weight: 400;
   font-style: normal;
 }
+
+.walter-turncoat-regular {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);

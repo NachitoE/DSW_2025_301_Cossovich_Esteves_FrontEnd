@@ -55,7 +55,6 @@ export async function updateBird(bird: Bird) {
 
 export async function createBirdComment(data: {
 	birdId: string;
-	userId: string;
 	text: string;
 }) {
 	const res = await api.post(API_BIRD_COMMENTS_URL, {
@@ -135,7 +134,6 @@ export async function getMeAuth(){
 export async function logoutAuth(){
 	const res = await api.get(`${API_AUTH_URL}/logout`);
 }
-const extractData = (res: any) => res.data.data;
 
 export async function getFilters(): Promise<FilterOptionsDTO[]>{
 	const res = await api.get(`${API_FILTERS_URL}/different-filters`);
@@ -145,3 +143,19 @@ export async function getFilteredBirds(selectedFilters: SelectedFilterOptionDTO[
 	const res = await api.post(`${API_FILTERS_URL}/filter-birds`, selectedFilters);
 	return extractData(res);
 }
+
+export async function isServiceOn(): Promise<boolean>{
+	const healthCli = axios.create({
+		timeout: 10000
+	})
+	try{
+		const res = await healthCli.get(`${API_URL}/api/health`);
+		return res.status === 200
+	}
+	catch(err){
+		return false
+	}
+	
+}
+
+const extractData = (res: any) => res.data.data;
