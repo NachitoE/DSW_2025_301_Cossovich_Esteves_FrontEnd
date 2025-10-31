@@ -11,8 +11,6 @@ export function BirdCard({ bird, onClickEvent }: BirdCardProps) {
     <FadeContent blur={false} duration={400} easing="ease-out" initialOpacity={0}>
       <div
         onClick={onClickEvent}
-        // aspect-[3/4] -> acá definís la proporción. Cambialo por la que quieras (ej aspect-[4/5] o aspect-square)
-        // además incluyo style fallback: aspectRatio CSS
         className="group bg-white/80 shadow-xl ring-2 ring-accent rounded-2xl overflow-hidden w-full cursor-pointer hover:scale-105 transition-transform duration-300 flex flex-col aspect-[3/4] min-h-0"
         style={{ aspectRatio: "3 / 4" }}
       >

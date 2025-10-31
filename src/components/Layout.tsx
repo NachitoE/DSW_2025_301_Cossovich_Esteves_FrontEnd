@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import GoogleLogin from "./GoogleLogin";
-import AdminDashboardButton from "@admin/AdminDashboardButton";
-
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<div className="min-h-screen flex flex-col bg-gradient-to-b from-cyan-50 via-sky-50 to-sky-200">
