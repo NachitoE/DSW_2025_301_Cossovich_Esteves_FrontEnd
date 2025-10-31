@@ -81,7 +81,7 @@ export default function BirdSearch({ onClick }: BirdSearchProps) {
           <div
             className={`mt-3 bg-white rounded-lg shadow p-4 overflow-hidden transform-gpu origin-top transition-all duration-200 ${
               showFilters
-                ? "opacity-100 scale-y-100 max-h-[70vh]"
+                ? "opacity-100 scale-y-100 "
                 : "opacity-0 scale-y-0 max-h-0"
             }`}
             aria-hidden={!showFilters}
