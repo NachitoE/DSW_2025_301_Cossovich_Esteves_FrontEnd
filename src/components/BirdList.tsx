@@ -14,10 +14,8 @@ export default function BirdList({ birds, onClick }: BirdListProps) {
 
   return (
     <div>
-      <h1 className="text-4xl font-extrabold text-center mb-8 text-lime-700 drop-shadow-lg">
-        Aves
-      </h1>
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {/* items-stretch para que cada celda tenga la misma altura */}
+      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch">
         {birds.map((bird) => (
           <BirdCard key={bird.id} bird={bird} onClickEvent={() => onClick(bird)} />
         ))}

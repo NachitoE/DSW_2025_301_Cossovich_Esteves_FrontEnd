@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
 @plugin "tailwindcss-animate";
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -29,6 +30,19 @@
 	font-style: normal;
 }
 
+@font-face {
+	font-family: "Queensides-Bold";
+	src: url("/assets/fonts/Queensides-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Queensides-Medium";
+	src: url("/assets/fonts/Queensides-Medium.ttf") format("truetype");
+	font-weight: medium;
+	font-style: normal;
+}
+
 html {
 	font-family: "Roboto Flex", sans-serif;
 	background-color: #fefae0;
@@ -37,6 +51,23 @@ html {
 
 .queensides-font {
 	font-family: "Queensides", sans-serif;
+}
+.queensides-font-bold{
+	font-family: "Queensides-Bold", sans-serif;
+}
+.queensides-font-medium{
+	font-family: "Queensides-Medium", sans-serif;
+}
+.caveat-brush-regular {
+  font-family: "Caveat Brush", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.schoolbell-regular {
+  font-family: "Schoolbell", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @theme inline {

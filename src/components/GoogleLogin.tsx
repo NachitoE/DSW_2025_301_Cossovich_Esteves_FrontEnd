@@ -2,6 +2,7 @@ import { useAuth } from "../context/AuthContext";
 import { useState, useRef, useEffect } from "react";
 import { isAdmin, logoutAuth } from "@/api";
 import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 
 export default function GoogleLogin() {
@@ -98,14 +99,15 @@ export default function GoogleLogin() {
 
 	return (
 		<div className="flex justify-center items-center h-screen">
-			<a
-				href="http://localhost:3000/api/auth/google"
-				title="Login with Google"
+			<button
+				onClick={() => {
+					window.location.href = "http://localhost:3000/api/auth/google";
+				}}
+				className="cursor-pointer flex items-center gap-2 px-5 py-3 bg-white text-gray-700 rounded-xl shadow-md hover:bg-gray-100 transition-all border border-gray-200"
 			>
-				<div className="dis">
-				<FaGoogle></FaGoogle>
-				Iniciar Sesión</div>
-			</a>
+				<FcGoogle className="text-blue-500 text-lg" />
+				<span className="">Iniciar Sesión</span>
+			</button>
 		</div>
 	);
 }

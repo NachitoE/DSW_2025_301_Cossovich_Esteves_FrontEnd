@@ -17,26 +17,21 @@ import type {
 type BirdSearchProps = {
   onClick: (bird: Bird) => void;
 };
+
 export default function BirdSearch({ onClick }: BirdSearchProps) {
   const [birds, setBirds] = useState<Bird[]>([]);
   const [filters, setFilters] = useState<FilterOptionsDTO[]>([]);
   const [allTraits, setAllTraits] = useState<BirdVisualTrait[]>([]);
-  const [selectedFilters, setSelectedFilters] = useState<SelectedFilterOptionDTO[]>(
-    []
-  );
-
+  const [selectedFilters, setSelectedFilters] = useState<SelectedFilterOptionDTO[]>([]);
   const [showFilters, setShowFilters] = useState<boolean>(false);
 
   const onChangeOptionHandler = (filterName: string, id: string) => {
     setSelectedFilters((prev) => {
-      if (id === "") {
-        return prev.filter((x) => x.filter !== filterName);
-      }
+      if (id === "") return prev.filter((x) => x.filter !== filterName);
       const exists = prev.some((x) => x.filter === filterName);
-      const next = exists
+      return exists
         ? prev.map((x) => (x.filter === filterName ? { ...x, option: id } : x))
         : [...prev, { filter: filterName, option: id }];
-      return next;
     });
   };
 
@@ -44,60 +39,53 @@ export default function BirdSearch({ onClick }: BirdSearchProps) {
     selectedFilters.find((x) => x.filter === filterName)?.option ?? "";
 
   useEffect(() => {
-    getAllBirdVisualTraits().then((data) => {
-      setAllTraits(data);
-    });
-    getFilters().then((data) => {
-      setFilters(data);
-    });
-    getAllBirds().then((data) => {
-      setBirds(data);
-    });
+    getAllBirdVisualTraits().then(setAllTraits);
+    getFilters().then(setFilters);
+    getAllBirds().then(setBirds);
   }, []);
 
   useEffect(() => {
-    getFilteredBirds(selectedFilters).then((data) => {
-      setBirds(data);
-    });
+    getFilteredBirds(selectedFilters).then(setBirds);
   }, [selectedFilters]);
 
   const selectedCount = selectedFilters.length;
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6 gap-4">
+      <div className="flex gap-6 items-start">
+        <main className=" order-last">
+          <BirdList birds={birds} onClick={onClick} />
+        </main>
 
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setShowFilters((s) => !s)}
-            className="px-3 py-2 bg-lime-600 text-white rounded-md hover:bg-lime-700 transition"
-          >
-            {showFilters ? "Ocultar filtros" : "Mostrar filtros"}
-          </button>
-
-          <div className="text-sm text-gray-600">
-            {selectedCount > 0 ? (
-              <span>
-                {selectedCount} filtro
-                {selectedCount > 1 ? "s" : ""} activo
-                {selectedCount > 1 ? "s" : ""}
-              </span>
-            ) : (
-              <span>Sin filtros</span>
-            )}
+        <aside className="w-64 flex-shrink-0 order-first">
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowFilters((s) => !s)}
+              className="px-3 py-2 bg-lime-600 text-white rounded-md hover:bg-lime-700 transition"
+            >
+              {showFilters ? "Ocultar filtros" : "Mostrar filtros"}
+            </button>
+            <div className="text-sm text-gray-600">
+              {selectedCount > 0 ? (
+                <span>
+                  {selectedCount} filtro{selectedCount > 1 ? "s" : ""} activo
+                  {selectedCount > 1 ? "s" : ""}
+                </span>
+              ) : (
+                <span>Sin filtros</span>
+              )}
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div className="flex gap-6">
-        <aside
-          className={`flex-shrink-0 transition-all duration-125 bg-white rounded-lg shadow p-4 overflow-hidden ${
-            showFilters ? "w-50 opacity-100 h-min" : "w-0 p-0 opacity-0"
-          }`}
-          aria-hidden={!showFilters}
-        >
-          {showFilters && (
+          <div
+            className={`mt-3 bg-white rounded-lg shadow p-4 overflow-hidden transform-gpu origin-top transition-all duration-200 ${
+              showFilters
+                ? "opacity-100 scale-y-100 max-h-[70vh]"
+                : "opacity-0 scale-y-0 max-h-0"
+            }`}
+            aria-hidden={!showFilters}
+          >
             <div className="space-y-4">
               <h2 className="font-semibold">Filtros</h2>
               <div>
@@ -126,11 +114,8 @@ export default function BirdSearch({ onClick }: BirdSearchProps) {
                 </button>
               </div>
             </div>
-          )}
+          </div>
         </aside>
-        <main className="flex-1">
-          <BirdList birds={birds} onClick={onClick} />
-        </main>
       </div>
     </div>
   );
